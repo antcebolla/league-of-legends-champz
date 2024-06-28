@@ -8,8 +8,8 @@ const renderChampions = async () =>{
 
             for(let champ in data.data){
                 champRow.innerHTML += `
-    <div class="col-3 d-flex justify-content-center align-items-center">
-        <div class="champCard">
+      <div class="col-3 d-flex justify-content-center myCard align-items-center">
+        <div class="champCard" id="${data.data[champ].name}">
           <img src="${`https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${data.data[champ].id}_0.jpg`}">
           <div class="cardContent">
             <p class="champ-name">${data.data[champ].name}</p>
@@ -29,4 +29,16 @@ const renderChampions = async () =>{
         console.log(err)
     }
 }
+
+const renderModal = () =>{
+  const modalContainer = document.getElementById("modal-container");
+  modalContainer.innerHTML = `<div class="champ-modal">
+
+  </div>`
+}
+
+champRow.addEventListener('click', (e)=>{
+  console.log(e.target.closest(".champCard").id)
+})
+
 renderChampions()
