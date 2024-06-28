@@ -1,0 +1,104 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'Friz Quadrata Regular OS';
+    font-style: normal;
+    font-weight: normal;
+    src: local('.assets/fonts/Friz Quadrata Regular OS'), format('woff');
+}
+
+
+@font-face {
+    font-family: 'BeaufortforLOL-Regular.ttf';
+    font-style: normal;
+    font-weight: normal;
+    src: local('.assets/fonts/BeaufortforLOL-Regular.ttf'), format('woff');
+}
+
+
+
+
+.champInput{
+    background: transparent;
+    color: white;
+    font-family: 'Friz Quadrata Regular OS';
+    font-size: 1.2rem;
+    border-radius: 1.2rem;
+}
+
+.searchButton{
+    font-family: 'Friz Quadrata Regular OS';
+    font-size: 1.2rem;
+    border-radius: 1.2rem; 
+}
+
+.champInput:focus{
+    background: transparent;
+    outline: none;
+    box-shadow: none;
+    border-color: white;
+    color: white;
+}
+
+body{
+    background-image: url(../assets/lanscape.jpg);
+    background-attachment: fixed ;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+.champCard{
+    width: 90%; 
+    position: relative;
+    overflow: hidden;
+    transition: 250ms ease-in;
+    background-image: "asset";
+    margin-bottom: 2em;
+    border: 1px solid rgb(200, 170, 110);
+    border-radius: 0.1rem;
+}
+
+#champions-container{
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+.cardContent{
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.6) 90%);
+    color: rgb(200, 170, 110);
+    position: absolute;
+    top: 100%;
+    height: 50%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    transition: 250ms ease-in;
+    font-family: 'BeaufortforLOL-Regular.ttf';
+    font-weight: 900;
+    font-style: italic;
+    justify-content: center;
+}
+
+.champ-name{
+    font-size: 1.5rem;
+}
+
+.champCard:hover .cardContent{
+    top: 60%;
+}
+
+.champCard:hover{
+    transform: scale(105%);
+}
+
+.champCard img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
