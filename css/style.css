@@ -16,7 +16,7 @@
     font-family: 'BeaufortforLOL-Regular.ttf';
     font-style: normal;
     font-weight: normal;
-    src: local('.assets/fonts/BeaufortforLOL-Regular.ttf'), format('woff');
+    src: local('.assets/fonts/BeaufortforLOL-Regular.woff'), format('woff');
 }
 
 
@@ -103,14 +103,79 @@ body{
     object-fit: cover;
 }
 
-.champ-modal{
+.modal-background{
     display:flex;
     justify-content: center;
-    align-items: center;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
     position: fixed;
     top: 0;
     height: 100vh;
     width: 100vw;
     background-color: rgba(0, 0, 0, 0.514);
     z-index: 200;
+    overflow: scroll;
+}
+
+.champ-modal{
+    width: 90%;
+    height: fit-content;
+    border: 1.5px solid rgb(200, 170, 110);
+    background-color: rgba(0, 0, 0, 0.753);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 1.5rem;
+}
+
+.champ-full-splash{
+    width: 100%;
+    border: 1.5px solid rgb(200, 170, 110);
+}
+
+.champ-skills{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+}
+
+.champ-skill{
+    display: flex;
+    flex-direction: row;
+    width: 20%;
+    justify-content: center;
+    align-items: center;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.champ-skill-img{
+    border: 1px solid rgb(200, 170, 110);
+    padding: 4px;
+    min-width: 16px;
+    min-height: 16px;
+    width: auto;
+    height: auto;
+}
+
+.champ-modal-name, .champ-modal-title{
+    font-family: "BeaufortforLOL-Regular.ttf";
+    color: rgb(200, 170, 110);
+    font-weight: 900;
+    font-style: italic;
+}
+
+.modal-skill-title{
+    font-family: "BeaufortforLOL-Regular.ttf";
+    color: rgb(200, 170, 110);
+    font-weight: 900;
+}
+
+.modal-skill-text{
+    font-family: "BeaufortforLOL-Regular.ttf";
+    color: rgb(200, 170, 110);
+    font-weight: 900;
+    font-size: 2em;
+    margin-left: 1rem;
 }
