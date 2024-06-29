@@ -12,7 +12,7 @@ const renderChampions = async () =>{
         <div class="champCard" id="${data.data[champ].name}">
           <img src="${`https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${data.data[champ].id}_0.jpg`}">
           <div class="cardContent">
-            <p class="champ-name">${data.data[champ].name}</p>
+            <p class="champ-name">${data.data[champ].name.toUpperCase()}</p>
           </div>
         </div>
       </div>
