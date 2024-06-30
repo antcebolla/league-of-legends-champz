@@ -16,7 +16,7 @@
     font-family: 'BeaufortforLOL-Regular.ttf';
     font-style: normal;
     font-weight: normal;
-    src: url('.assets/fonts/BeaufortforLOL-BoldItalic.otf'), format('opentype');
+    src: local('.assets/fonts/BeaufortforLOL-BoldItalic.otf'), format('opentype');
 }
 
 
