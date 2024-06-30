@@ -2,7 +2,8 @@
 
 const champRow = document.getElementById("champ-row")
 const modalContainer = document.getElementById("modal-container")
-
+let modalData = ''
+let currentChamp = ''
 
 //render champion cards
 
@@ -44,8 +45,9 @@ const renderChampionModal = async (champId) =>{
     if(response.status == 200){
       
       const data = await response.json()
+      modalData = data
       
-      console.log(data.data[champId].name)
+      currentChamp = data.data[champId].id
 
       modalContainer.innerHTML = `
       <div class="modal-background">
@@ -55,14 +57,14 @@ const renderChampionModal = async (champId) =>{
       <a class="modal-exit">X</a>
       <img src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champId}_0.jpg" class="champ-full-splash">
       <div class="champ-skills">
-        <div class="champ-skill"><img id ="Passive" class="champ-skill-img" src="https://ddragon.leagueoflegends.com/cdn/14.13.1/img/passive/${data.data[champId].passive.image.full}"></div>
+        <div class="champ-skill"><img id ="Passive" class="champ-skill-img clickeable-skill" src="https://ddragon.leagueoflegends.com/cdn/14.13.1/img/passive/${data.data[champId].passive.image.full}"></div>
         <div class="champ-skill"><img id ="Q"  class="champ-skill-img clickeable-skill" src="https://ddragon.leagueoflegends.com/cdn/14.13.1/img/spell/${data.data[champId].spells[0].image.full}"></div>
         <div class="champ-skill"><img id ="W"  class="champ-skill-img clickeable-skill" src="https://ddragon.leagueoflegends.com/cdn/14.13.1/img/spell/${data.data[champId].spells[1].image.full}"></div>
         <div class="champ-skill"><img id ="E"  class="champ-skill-img clickeable-skill" src="https://ddragon.leagueoflegends.com/cdn/14.13.1/img/spell/${data.data[champId].spells[2].image.full}"></div>
         <div class="champ-skill"><img id ="R"  class="champ-skill-img clickeable-skill" src="https://ddragon.leagueoflegends.com/cdn/14.13.1/img/spell/${data.data[champId].spells[3].image.full}"></div>
       </div>
-      <h1 class="modal-skill-title">Passive - ${data.data[champId].passive.name}</h1>
-      <p class="modal-skill-text">${data.data[champId].passive.description}</p>
+      <h1 class="modal-skill-title" id="modal-skill-current-title" >Passive - ${data.data[champId].passive.name}</h1>
+      <p class="modal-skill-text" id="modal-skill-current-description" >${data.data[champId].passive.description}</p>
     </div>
   </div>
       `
@@ -87,6 +89,38 @@ champRow.addEventListener('click', (e)=>{
     renderChampionModal(e.target.closest(".champCard").id)
   }
   
+})
+
+//exit the modal
+
+modalContainer.addEventListener('click', (e)=>{
+  if(e.target.classList.contains('modal-exit')){
+    modalContainer.innerHTML = ''
+    modalData = ''
+    currentChamp = ''
+  }
+  else if(e.target.classList.contains('clickeable-skill')){
+    if(e.target.id == 'Passive'){
+      document.getElementById('modal-skill-current-title').innerHTML = `Passive - ${modalData.data[currentChamp].passive.name}`;
+      document.getElementById('modal-skill-current-description').innerHTML = `${modalData.data[currentChamp].passive.description}`
+    }
+    else if(e.target.id == 'Q'){
+      document.getElementById('modal-skill-current-title').innerHTML = `Q - ${modalData.data[currentChamp].spells[0].name}`;
+      document.getElementById('modal-skill-current-description').innerHTML = `${modalData.data[currentChamp].spells[0].description}`
+    }
+    else if(e.target.id == 'W'){
+      document.getElementById('modal-skill-current-title').innerHTML = `W - ${modalData.data[currentChamp].spells[1].name}`;
+      document.getElementById('modal-skill-current-description').innerHTML = `${modalData.data[currentChamp].spells[1].description}`
+    }
+    else if(e.target.id == 'E'){
+      document.getElementById('modal-skill-current-title').innerHTML = `E - ${modalData.data[currentChamp].spells[2].name}`;
+      document.getElementById('modal-skill-current-description').innerHTML = `${modalData.data[currentChamp].spells[2].description}`
+    }
+    else if(e.target.id == 'R'){
+      document.getElementById('modal-skill-current-title').innerHTML = `R - ${modalData.data[currentChamp].spells[3].name}`;
+      document.getElementById('modal-skill-current-description').innerHTML = `${modalData.data[currentChamp].spells[3].description}`
+    }
+  }
 })
 
 //callings

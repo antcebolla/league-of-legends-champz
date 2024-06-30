@@ -209,3 +209,7 @@ body{
     color: hsl(40, 45%, 41%);
     transform: scale(120%);
 }
+
+#modal-container{
+    transition: 200ms ease-in;
+}
