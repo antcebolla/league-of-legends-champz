@@ -1,9 +1,48 @@
 //element inicialization
-
+const champInput = document.getElementById("search-champ-input")
+const champSearchBtn = document.getElementById("search-champ-btn")
 const champRow = document.getElementById("champ-row")
 const modalContainer = document.getElementById("modal-container")
 let modalData = ''
 let currentChamp = ''
+let champsData = ''
+
+//search btn functionality
+
+const renderSearched = () =>{
+  if(champInput.value !== ''){
+    let champArr = []
+    
+    for(let champ in champsData.data){
+      if(champsData.data[champ].name.toLowerCase() == champInput.value.toLowerCase()){
+        champArr.push(champsData.data[champ])
+      }
+      
+    }
+    if(champArr.length == 1){
+      champArr.forEach((el)=>{
+        champRow.innerHTML = `
+        <div class="col-lg-3 col-xxl-2 col-md-4 col-sm-4 col-6 d-flex justify-content-center card-frame align-items-center">
+          <div class="champCard" id="${el.id}">
+            <img src="${`https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${el.id}_0.jpg`}">
+            <div class="cardContent">
+              <p class="champ-name">${el.name.toUpperCase()}</p>
+            </div>
+          </div>
+        </div>
+      `
+      })
+    }
+    else{
+      champRow.innerHTML = ''
+      renderChampions()
+    }
+  }
+  else{
+    champRow.innerHTML = ''
+    renderChampions()
+  }
+}
 
 //render champion cards
 
@@ -12,6 +51,8 @@ const renderChampions = async () =>{
         const response = await fetch('https://ddragon.leagueoflegends.com/cdn/14.13.1/data/en_US/champion.json')
         if(response.status === 200){
             const data = await response.json()
+
+            champsData =  data
 
             for(let champ in data.data){
                 champRow.innerHTML += `
@@ -131,6 +172,13 @@ modalContainer.addEventListener('click', (e)=>{
       e.target.style.outline = "solid rgb(200, 170, 110)"
     }
   }
+})
+
+//search event listener
+
+champSearchBtn.addEventListener('click', (e)=>{
+  e.preventDefault();
+  renderSearched()
 })
 
 //callings
