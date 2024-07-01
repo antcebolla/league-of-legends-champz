@@ -61,6 +61,7 @@ body{
     margin-bottom: 2em;
     border: 1px solid rgb(200, 170, 110);
     border-radius: 0.1rem;
+    cursor: pointer;
 }
 
 #champions-container{
@@ -88,6 +89,7 @@ body{
 
 .champ-name{
     font-size: 1.5rem;
+    text-align: center;
 }
 
 .champCard:hover .cardContent{
@@ -121,6 +123,7 @@ body{
 .champ-modal{
     width: 90%;
     height: fit-content;
+    min-height: 200vh;
     border: 1.5px solid rgb(200, 170, 110);
     background-color: rgba(0, 0, 0, 0.753);
     display: flex;
@@ -154,13 +157,16 @@ body{
 }
 
 .champ-skill-img{
-    border: 1px solid rgb(200, 170, 110);
     padding: 4px;
-    min-width: 16px;
-    min-height: 16px;
-    width: auto;
-    height: auto;
-    transition: 200ms ease-in;
+    min-width: 40px;
+    min-height: 40px;
+    max-width: 40%;
+    transition: 200ms ease-in-out;
+    cursor: pointer;
+}
+
+#Passive{
+    outline: solid rgb(200, 170, 110);
 }
 
 .champ-skill-img:hover{
@@ -183,6 +189,7 @@ body{
     font-family: "BeaufortforLOL-Regular.ttf";
     color: rgb(200, 170, 110);
     font-weight: 900;
+    text-align: center;
 }
 
 .modal-skill-text{
@@ -196,13 +203,14 @@ body{
 .modal-exit{
     color: rgb(200, 170, 110);
     position: absolute;
-    top: 5px;
-    right: 15px;
+    top: 0.7%;
+    right: 3%;
     font-family: "BeaufortforLOL-Regular.ttf";
-    font-size: 2em;
+    font-size: 200%;
     text-decoration: none;
     text-align: center;
     transition: 200ms ease-in;
+    cursor: pointer;
 }
 
 .modal-exit:hover{
@@ -212,4 +220,24 @@ body{
 
 #modal-container{
     transition: 200ms ease-in;
+}
+.svg-logo > img{
+    width: 20vw; 
+    min-width: 100px; 
+    height: auto;
+    text-align: center;
+}
+
+@media screen and (max-width: 700px){
+    .svg-logo > img{
+        width: 40vw; 
+        min-width: 100px; 
+        height: auto;
+        text-align: center;
+    }
+    .svg-logo, .nav-form{
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+    }
 }

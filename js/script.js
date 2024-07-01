@@ -15,7 +15,7 @@ const renderChampions = async () =>{
 
             for(let champ in data.data){
                 champRow.innerHTML += `
-      <div class="col-3 d-flex justify-content-center card-frame align-items-center">
+      <div class="col-lg-3 col-xxl-2 col-md-4 col-sm-4 col-6 d-flex justify-content-center card-frame align-items-center">
         <div class="champCard" id="${data.data[champ].id}">
           <img src="${`https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${data.data[champ].id}_0.jpg`}">
           <div class="cardContent">
@@ -91,7 +91,7 @@ champRow.addEventListener('click', (e)=>{
   
 })
 
-//exit the modal
+//exit the modal or change skill selected
 
 modalContainer.addEventListener('click', (e)=>{
   if(e.target.classList.contains('modal-exit')){
@@ -103,22 +103,32 @@ modalContainer.addEventListener('click', (e)=>{
     if(e.target.id == 'Passive'){
       document.getElementById('modal-skill-current-title').innerHTML = `Passive - ${modalData.data[currentChamp].passive.name}`;
       document.getElementById('modal-skill-current-description').innerHTML = `${modalData.data[currentChamp].passive.description}`
+      document.querySelectorAll('.champ-skill-img').forEach((el)=>{ el.style.outline = 'none'})
+      e.target.style.outline = "solid rgb(200, 170, 110)"
     }
     else if(e.target.id == 'Q'){
       document.getElementById('modal-skill-current-title').innerHTML = `Q - ${modalData.data[currentChamp].spells[0].name}`;
       document.getElementById('modal-skill-current-description').innerHTML = `${modalData.data[currentChamp].spells[0].description}`
+      document.querySelectorAll('.champ-skill-img').forEach((el)=>{ el.style.outline = 'none'})
+      e.target.style.outline = "solid rgb(200, 170, 110)"
     }
     else if(e.target.id == 'W'){
       document.getElementById('modal-skill-current-title').innerHTML = `W - ${modalData.data[currentChamp].spells[1].name}`;
       document.getElementById('modal-skill-current-description').innerHTML = `${modalData.data[currentChamp].spells[1].description}`
+      document.querySelectorAll('.champ-skill-img').forEach((el)=>{ el.style.outline = 'none'})
+      e.target.style.outline = "solid rgb(200, 170, 110)"
     }
     else if(e.target.id == 'E'){
       document.getElementById('modal-skill-current-title').innerHTML = `E - ${modalData.data[currentChamp].spells[2].name}`;
       document.getElementById('modal-skill-current-description').innerHTML = `${modalData.data[currentChamp].spells[2].description}`
+      document.querySelectorAll('.champ-skill-img').forEach((el)=>{ el.style.outline = 'none'})
+      e.target.style.outline = "solid rgb(200, 170, 110)"
     }
     else if(e.target.id == 'R'){
       document.getElementById('modal-skill-current-title').innerHTML = `R - ${modalData.data[currentChamp].spells[3].name}`;
       document.getElementById('modal-skill-current-description').innerHTML = `${modalData.data[currentChamp].spells[3].description}`
+      document.querySelectorAll('.champ-skill-img').forEach((el)=>{ el.style.outline = 'none'})
+      e.target.style.outline = "solid rgb(200, 170, 110)"
     }
   }
 })
